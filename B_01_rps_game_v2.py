@@ -47,25 +47,24 @@ o Scissors beats paper
 Good luck!
     ''')
 
-
 # checks for an integer more than 0 (allows <enter>)
-def int_check(question):
+def int_check(to_check):
     while True:
         error = "Please enter an integer that is 1 or more."
 
         # check for infinite mode
-        if question == "":
-            return ""
+        if to_check == "":
+            return "infinite"
 
         try:
-            response = int(question)
+            response = int(to_check)
 
             # check that the number is more than / equal to 13
             if response < 1:
+                # print (error)
                 return "invalid"
             else:
                 return response
-
 
         except ValueError:
             # print(error)
@@ -118,10 +117,6 @@ if want_instructions == "yes":
 
 
 # Ask user for number of rounds / infinite mode
-def int_check(param):
-    pass
-
-
 num_rounds = int_check("How many rounds would you like? Push <enter> for infinite mode: ")
 
 if num_rounds == "infinite":
@@ -130,6 +125,11 @@ if num_rounds == "infinite":
 
 # Game loops starts here
 while rounds_played < num_rounds:
+
+    # if user are in infinite mode, increase number of rounds!
+    if mode == "infinite":
+        num_rounds += 1
+        rounds_played += 1
 
     # Rounds heading (based on mode)
     if mode == "infinite":
