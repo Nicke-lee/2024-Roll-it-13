@@ -48,27 +48,27 @@ Good luck!
     ''')
 
 # checks for an integer more than 0 (allows <enter>)
-def int_check(to_check):
+def int_check(question):
     while True:
         error = "Please enter an integer that is 1 or more."
 
+        response = input(question)
+
         # check for infinite mode
-        if to_check == "":
+        if response == "":
             return "infinite"
 
         try:
-            response = int(to_check)
+            response = int(response)
 
             # check that the number is more than / equal to 13
             if response < 1:
-                # print (error)
-                return "invalid"
+                print(error)
             else:
                 return response
 
         except ValueError:
-            # print(error)
-            return "invalid"
+            print(error)
 
 
 # compares user / computer choice and returns
@@ -192,8 +192,8 @@ percent_tied = 100 - percent_won - percent_lost
 # Output Game Statistics
 print("Game Statistics")
 print(f" Won: {percent_won:.2f} \t"
-      f" Lost: {percent_lost:,2.} \t"
-      f" Tied: {percent_tied:,2f}")
+      f" Lost: {percent_lost:.2f} \t"
+      f" Tied: {percent_tied:.2f}")
 
 # Display game history if user want to see it
 see_history = string_checker("\nDo you want to see the game history? ")
